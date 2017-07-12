@@ -1,0 +1,23 @@
+<div class="row-fluid">
+      		<div class="col-md-12">
+      			<fieldset>
+      				<legend>Compress</legend>
+      				<div class="control-group">
+						<label class="control-label" for="Text">Text</label>
+						<div class="controls">
+							<textarea rows="4" style="width:100%;" id="text" [(ngModel)]="inputText"></textarea>
+						</div>
+						<div class="btn-group" id="actionButton">
+							<button class="btn btn-medium btn-primary" type="button" data-type="compress" (click)="compressIt()">Compress</button>
+							<button class="btn btn-medium btn-primary" type="button" data-type="decompress" (click)="decompressIt()">Decompress</button>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="Result">Result</label>
+						<div class="controls">
+							<textarea rows="4" style="width:100%;" id="result" [(ngModel)]="outputText"></textarea>
+						</div>
+					</div>
+      			</fieldset>
+      		</div>
+      	</div>

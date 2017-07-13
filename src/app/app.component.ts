@@ -39,6 +39,7 @@ export class AppComponent {
   // }
 
   compressIt(): void{
+    console.log(this.inputText.split('').length);
    var charData = this.inputText.split('').map(function(x){return x.charCodeAt(0);});
    var binData = new Uint8Array(charData);
    var deflatePayload = pako.deflate(binData, { to: 'string' });
@@ -50,11 +51,16 @@ export class AppComponent {
   decompressIt(): void {
     var strData = atob(this.inputText);
   // var strData = encodeURIComponent(this.inputText);
-   var charData = strData.split('').map(function(x){return x.charCodeAt(0);});
-   var binData = new Uint8Array(charData);
+  console.log(strData.split('').length);
+  //  var charData = strData.split('').map(function(x){return x.charCodeAt(0);});
+  //  var binData = new Uint8Array(charData);
    try {
-       var result = pako.inflate(binData);
-       var strResult = String.fromCharCode.apply(null, new Uint8Array(result));
+       var result = pako.inflate(strData);
+      //  var strResult = String.fromCharCode.apply(String, new Uint8Array(result));
+        var strResult = "";
+          for (var i = 0; i < result.length; i++) {
+            strResult += String.fromCharCode(result[i]);
+          }
        this.outputText =  strResult;
    } catch (err) {
        console.log(err);
